@@ -39,7 +39,6 @@ Task 1 : Steps To Perform Data Pre-Processing :
 - Step 5: Convert the pre-processed dataset into an SQL file. 
 - Step 6: Manually generate a table by utilizing the database information provided in the "Database Info" tab.
 
----------------------------------------------------------------************-------------------------------------------------------------------------
 
 
 ``` 
@@ -73,9 +72,6 @@ data["previous_year_rating"]=data["previous_year_rating"].astype("int64")
 
 # Now we will save this cleaned dataframe as "Cleaned_employees_final_dataset.csv" in a csv file format.
 data.to_csv("Cleaned_employees_final_dataset.csv",index=False) ```
-
-
----------------------------------------------------------------**************-------------------------------------------------------------------------
 
 
 
