@@ -32,12 +32,12 @@ Using SQL Queries To Solve Problem Statements :
 In this task we worked on handling null values, deletion or transformation of irrelevant values, data type transformation, removing duplicates and data validations. Once you have completed this task, you will get a refined and cleaner data set for further analysis.
 
 Task 1 : Steps To Perform Data Pre-Processing :
-Step 1: Removing duplicate rows.
-Step 2: Removing rows for which numeric columns are having irrelevant data type values
-Step 3: Remove irrelevant values from each column if any. Validation all values for a column, Check for any inconsistencies or discrepancies in data types, units, or formats.Feel free to add more validation checks which you might feel necessary for the dataset’s integrity
-Step 4: Export the cleaned dataset as a .csv file: prefer UTF-8 encoding.
-Step 5: Convert the pre-processed dataset into an SQL file. 
-Step 6: Manually generate a table by utilizing the database information provided in the "Database Info" tab.
+- Step 1: Removing duplicate rows.
+- Step 2: Removing rows for which numeric columns are having irrelevant data type values
+- Step 3: Remove irrelevant values from each column if any. Validation all values for a column, Check for any inconsistencies or discrepancies in data  types, units, or formats.Feel free to add more validation checks which you might feel necessary for the dataset’s integrity
+- Step 4: Export the cleaned dataset as a .csv file: prefer UTF-8 encoding.
+- Step 5: Convert the pre-processed dataset into an SQL file. 
+- Step 6: Manually generate a table by utilizing the database information provided in the "Database Info" tab.
 
 ---------------------------------------------------------------************-------------------------------------------------------------------------
 
