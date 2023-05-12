@@ -145,7 +145,8 @@ print(result)
 ***
 
 ## Task 3 :Find the percentage of employees who have won awards in each region.(Round average age up to two decimal places if needed).
-```
+```python
+##code
 Solution :
 query = "select region, round(count(employee_id) *100/round((select count(*) from employee where awards_won = 1),2),2) as award_percentage from employee where awards_won = 1 group by 1"
 
