@@ -9,7 +9,7 @@ Analysing Employee Performance for Hr Analytics Using Python and MySQL
 ## Data Source
 Data was provided by HiCounselor.
 
-# Data Analysis Concepts Demonstrated 
+# Data Analysis Concepts Utilized In This Project 
 
 Data Preprocessing Using Python Programming and connecting to Database : 
 - Droping null values 
