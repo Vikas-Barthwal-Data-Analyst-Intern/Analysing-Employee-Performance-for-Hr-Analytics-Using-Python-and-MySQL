@@ -93,12 +93,13 @@ data1.to_sql('employee', conn, index=False)
 ```
 
 ## Task 1 :Find the average age of employees in each department and gender group. ( Round average age up to two decimal places if needed).
-```
-Solution:
+```python
+##code
+# Solution:
 query = "SELECT department,gender, round(avg(age),2) as avg_age FROM employee group by 1,2"
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result1)
 ```
 
@@ -127,12 +128,13 @@ print(result1)
 ***
 
 ## Task 2 :List the top 3 departments with the highest average training scores(Round average age up to two decimal places if needed).
-```
-Solution :
+```python
+##code
+# Solution :
 query = "SELECT department, round(avg(avg_training_score),2) as avg_training_score FROM employee group by 1 order by 2 desc limit 3"
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -147,12 +149,12 @@ print(result)
 ## Task 3 :Find the percentage of employees who have won awards in each region.(Round average age up to two decimal places if needed).
 ```python
 ##code
-Solution :
+# Solution :
 query = "select region, round(count(employee_id) *100/round((select count(*) from employee where awards_won = 1),2),2) as award_percentage from employee where awards_won = 1 group by 1"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -194,13 +196,14 @@ print(result)
 ***
 
 ## Task 4 :Show the number of employees who have met more than 80% of KPIs for each recruitment channel and education level.
-```
-Solution :
+```python
+##code
+# Solution :
 query = "SELECT recruitment_channel,education,COUNT(*) as emp_count from employee where KPIs_met_more_than_80 =1  group by 1,2"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -220,13 +223,14 @@ print(result)
 ***
 
 ## Task 5 :Find the average length of service for employees in each department, considering only employees with previous year ratings greater than or equal   to 4(Round average age up to two decimal places if needed).
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select department, round(avg(length_of_service),2) as avg_length_service from employee where previous_year_rating >= 4 group by 1"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -245,13 +249,14 @@ print(result)
 
 
 ## Task 6 :List the top 5 regions with the highest average previous year ratings.(Round average age up to two decimal places if needed).
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select region, round(avg(previous_year_rating),2) as avg_pre_year_rating from employee group by 1 order by 2 desc limit 5"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -266,13 +271,14 @@ print(result)
 ***
 
 ## Task 7 :List the departments with more than 100 employees having a length of service greater than 5 years.
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select department, count(*) as emp_num from employee where length_of_service >5  group by 1 having count(*)>100"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -290,13 +296,14 @@ print(result)
 
 
 ## Task 8 :Show the average length of service for employees who have attended more than 3 trainings, grouped by department and gender.(Round average age up to two decimal places if needed).
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select department,gender,round(avg(length_of_service),2) as avg_LoS from employee where no_of_trainings >3  group by 1,2"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -317,14 +324,15 @@ print(result)
 
 
 ## Task 9 :Find the percentage of female employees who have won awards, per department. Also show the number of female employees who won awards and total female employees.(Round average age up to two decimal places if needed).
-```
+```python
+##code
 
-Solution :
+# Solution :
 query = "select department,round((count(case when awards_won = 1 then 1 end)*100)/round(count(*),2),2) as percentage_a_won,count(case when awards_won =1 then 1 end) as fawon_count,count(*) as total_F from employee  where gender ='f' group by 1"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -343,13 +351,14 @@ print(result)
 
 
 ## Task 10 :Calculate the percentage of employees per department who have a length of service between 5 and 10 years.(Round average age up to two decimal places if needed).
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select department, round((count(case when length_of_service between 5 and 10 then 1 end)*100/round(count(*),2)),2) as service_per  from employee  group by 1"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -368,13 +377,14 @@ print(result)
 ***
 
 ## Task 11 :Find the top 3 regions with the highest number of employees who have met more than 80% of their KPIs and received at least one award, grouped by department and region.
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select department,region, count(*) as noemp from employee where KPIs_met_more_than_80 = 1 and awards_won >=1 group by 1,2 order by 3 desc limit 3"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -386,14 +396,15 @@ print(result)
 *** 
 
 ## Task 12 :Calculate the average length of service for employees per education level and gender, considering only those employees who have completed more than 2 trainings and have an average training score greater than 75(Round average age up to two decimal places if needed).
-```
+```python
+##code
 
-Solution :
+# Solution :
 query = "select education, gender, round(avg(length_of_service),2) as avg_LoS from employee where no_of_trainings >2 and avg_training_score>75 group by 1,2"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -408,14 +419,15 @@ print(result)
 
 
 ### Task 13 :For each department and recruitment channel, find the total number of employees who have met more than 80% of their KPIs, have a previous_year_rating of 5, and have a length of service greater than 10 years.
-```
+```python
+##code
 
-Solution :
+# Solution :
 query = "select department,recruitment_channel,count(*) as total_emp from employee where KPIs_met_more_than_80=1 and previous_year_rating=5 and length_of_service>10 group by 1,2"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 
 ```
@@ -445,13 +457,14 @@ print(result)
 
 ## Task 14 :Calculate the percentage of employees in each department who have received awards, have a previous_year_rating of 4 or 5, and an average training score above 70, grouped by department and gender(Round average age up to two decimal places if needed).
 
-```
-Solution :
+```python
+##code
+# Solution :
 query = "select department,gender, round((count(case when awards_won =1 and previous_year_rating>=4 and avg_training_score > 70 then 1 end)*100/round(count(*),2)),2) as award_per from employee group by 1,2"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
@@ -480,14 +493,15 @@ print(result)
 
 ## Task 15 :List the top 5 recruitment channels with the highest average length of service for employees who have met more than 80% of their KPIs, have a previous_year_rating of 5, and an age between 25 and 45 years, grouped by department and recruitment channel.(Round average age up to two decimal places if needed).
 
-```
+```python
+##code
 
-
+# Solution :
 query = "select department,recruitment_channel,round(avg(length_of_service),2) as avg_LoS from employee  where KPIs_met_more_than_80 =1 and previous_year_rating=5 and age between 25 and 45  group by 1,2 order by 3 desc  limit 5"
 
 result = pd.read_sql_query(query, conn)
 
-Displaying the query result :
+# Displaying the query result :
 print(result)
 ```
 
