@@ -2,7 +2,7 @@
 Analysing Employee Performance for Hr Analytics Using Python and MySQL
 ## Analysing Employee Performance for Hr Analytics Using Python and MySQL
 
-![info.jpeg](images/info.jpeg)
+![info.jpeg](images/project.jpeg)
 
 ***
 
