@@ -26,7 +26,7 @@ Using SQL Queries To Solve Problem Statements :
 5.Using Joins to get desired results from CTE tables
 6.Sub queries etc
 
------
+***
 
 # Module 1: Data Preprocessing using python:
 In this task we worked on handling null values, deletion or transformation of irrelevant values, data type transformation, removing duplicates and data validations. Once you have completed this task, you will get a refined and cleaner data set for further analysis.
