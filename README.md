@@ -41,7 +41,7 @@ Task 1 : Steps To Perform Data Pre-Processing :
 
 
 
-``` 
+```python
 
 import pandas as pd
 import sqlite3
@@ -73,7 +73,7 @@ data["previous_year_rating"]=data["previous_year_rating"].astype("int64")
 # Now we will save this cleaned dataframe as "Cleaned_employees_final_dataset.csv" in a csv file format.
 data.to_csv("Cleaned_employees_final_dataset.csv",index=False) ```
 
-
+***
 
 
 # Module 2: Data Analysing using SQL
@@ -82,7 +82,7 @@ In this module, we worked on performing data analysis on the pre-processed data 
 
  
 # Here, First we will load our cleaned csv dataset named "Cleaned_employees_final_dataset.csv" into a new dataframe.
-
+```python
 data1 = pd.read_csv("Cleaned_employees_final_dataset.csv")
 
 # We will Create a SQLite in-memory database and establish a connection
@@ -92,7 +92,7 @@ conn = sqlite3.connect(':memory:')
 data1.to_sql('employee', conn, index=False)
 
 
-Task 1 :Find the average age of employees in each department and gender group. ( Round average age up to two decimal places if needed).
+## Task 1 :Find the average age of employees in each department and gender group. ( Round average age up to two decimal places if needed).
 
 Solution:
 query = "SELECT department,gender, round(avg(age),2) as avg_age FROM employee group by 1,2"
@@ -100,7 +100,7 @@ result = pd.read_sql_query(query, conn)
 
 Displaying the query result :
 print(result1)
-
+```
 
 
                department gender  avg_age
@@ -124,17 +124,17 @@ print(result1)
     17         Technology      m    35.87
 
 
-
+***
 
 Task 2 :List the top 3 departments with the highest average training scores(Round average age up to two decimal places if needed).
-
+```
 Solution :
 query = "SELECT department, round(avg(avg_training_score),2) as avg_training_score FROM employee group by 1 order by 2 desc limit 3"
 result = pd.read_sql_query(query, conn)
 
 Displaying the query result :
 print(result)
-
+```
 
        department  avg_training_score
     0   Analytics               84.59
@@ -145,7 +145,7 @@ print(result)
 
 
 Task 3 :Find the percentage of employees who have won awards in each region.(Round average age up to two decimal places if needed).
-
+```
 Solution :
 query = "select region, round(count(employee_id) *100/round((select count(*) from employee where awards_won = 1),2),2) as award_percentage from employee where awards_won = 1 group by 1"
 
@@ -153,7 +153,7 @@ result = pd.read_sql_query(query, conn)
 
 Displaying the query result :
 print(result)
-
+```
 
            region  award_percentage
     0   region_10              2.71
@@ -193,7 +193,7 @@ print(result)
 
 
 Task 4 :Show the number of employees who have met more than 80% of KPIs for each recruitment channel and education level.
-
+```
 Solution :
 query = "SELECT recruitment_channel,education,COUNT(*) as emp_count from employee where KPIs_met_more_than_80 =1  group by 1,2"
 
@@ -201,7 +201,7 @@ result = pd.read_sql_query(query, conn)
 
 Displaying the query result :
 print(result)
-
+```
 
 
       recruitment_channel        education  emp_count
@@ -219,7 +219,7 @@ print(result)
 
 
 Task 5 :Find the average length of service for employees in each department, considering only employees with previous year ratings greater than or equal   to 4(Round average age up to two decimal places if needed).
-
+```
 Solution :
 query = "select department, round(avg(length_of_service),2) as avg_length_service from employee where previous_year_rating >= 4 group by 1"
 
@@ -227,7 +227,7 @@ result = pd.read_sql_query(query, conn)
 
 Displaying the query result :
 print(result)
-
+```
 
               department  avg_length_service
     0          Analytics                5.53
