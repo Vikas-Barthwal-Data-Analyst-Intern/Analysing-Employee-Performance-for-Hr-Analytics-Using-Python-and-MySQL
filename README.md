@@ -90,8 +90,8 @@ data1 = pd.read_csv("Cleaned_employees_final_dataset.csv")
 conn = sqlite3.connect(':memory:')
 
 # Store the DataFrame in a SQL table
-data1.to_sql('employee', conn, index=False)```
-
+data1.to_sql('employee', conn, index=False)
+```
 ***
 
 ## Task 1 :Find the average age of employees in each department and gender group. ( Round average age up to two decimal places if needed).
