@@ -42,10 +42,12 @@ Step 6: Manually generate a table by utilizing the database information provided
 ---------------------------------------------------------------************-------------------------------------------------------------------------
 
 
-``` import pandas as pd
-    import sqlite3
-    import warnings
-    warnings.filterwarnings("ignore")
+``` 
+
+import pandas as pd
+import sqlite3
+import warnings
+warnings.filterwarnings("ignore")
 
 
 # First step is to get dataframe by calling read_csv function of pandas
