@@ -106,7 +106,7 @@ data1.to_sql('employee', conn, index=False)
 ```
 
 
-               department gender  avg_age
+               department gender  average_age
     0           Analytics      f    29.88
     1           Analytics      m    33.54
     2             Finance      f    33.33
@@ -160,7 +160,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-           region  award_percentage
+           region  AWARDS_PERCENTAGE
     0   region_10              2.71
     1   region_11              1.63
     2   region_12              0.81
@@ -201,7 +201,7 @@ data1.to_sql('employee', conn, index=False)
 ```python
 ##code
 # Solution :
-  query = "select recruitment_channel,education,count(employee_id) from employee where `KPIs_met_more_than_80` =1 group by recruitment_channel,education"
+  query = "select recruitment_channel,education,count(employee_id)as total_employee from employee where `KPIs_met_more_than_80` =1 group by recruitment_channel,education"
 
   result = pd.read_sql_query(query, conn)
 
@@ -210,7 +210,7 @@ data1.to_sql('employee', conn, index=False)
 ```
 
 
-      recruitment_channel        education  emp_count
+      recruitment_channel        education  total_employee
     0               other        Bachelors       2044
     1               other  Below Secondary         38
     2               other  Masters & above       1003
@@ -236,7 +236,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-              department  avg_length_service
+              department  average_length_of_service
     0          Analytics                5.53
     1            Finance                5.70
     2                 HR                6.07
@@ -262,7 +262,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-          region  avg_pre_year_rating
+          region  average_previous_year_rating
     0  region_25                 3.58
     1   region_4                 3.53
     2   region_8                 3.50
@@ -284,7 +284,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-              department  emp_num
+              department     total
     0          Analytics      591
     1            Finance      300
     2                 HR      332
@@ -309,7 +309,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-               department gender  avg_LoS
+               department gender  average_length_of_service
     0           Analytics      m     4.80
     1             Finance      m     3.50
     2          Operations      f     7.50
@@ -338,16 +338,16 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-              department  percentage_a_won  fawon_count  total_F
-    0          Analytics              2.29            3      131
-    1            Finance              2.22            4      180
-    2                 HR              1.31            4      306
-    3              Legal              4.00            1       25
-    4         Operations              3.08           42     1365
-    5        Procurement              3.35           31      926
-    6                R&D              0.00            0       16
-    7  Sales & Marketing              2.14           19      889
-    8         Technology              2.20           17      772
+              department  percentage_of_female_employees_won_awards   female_employees_won_awards    total_female_employees
+    0          Analytics              2.29                                    3                             131
+    1            Finance              2.22                                    4                             180
+    2                 HR              1.31                                    4                             306
+    3              Legal              4.00                                    1                             25
+    4         Operations              3.08                                    42                            1365
+    5        Procurement              3.35                                    31                            926
+    6                R&D              0.00                                    0                             16
+    7  Sales & Marketing              2.14                                    19                            889
+    8         Technology              2.20                                    17                            772
 
 ***
 
@@ -364,7 +364,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-              department  service_per
+              department  employee_percent_per_dpt
     0          Analytics        47.63
     1            Finance        47.35
     2                 HR        45.73
@@ -390,7 +390,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-              department    region  noemp
+              department    region  total_employees
     0  Sales & Marketing  region_2     19
     1        Procurement  region_2     13
     2  Sales & Marketing  region_7     10
@@ -410,7 +410,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-             education gender  avg_LoS
+             education gender  average_service
     0        Bachelors      f     5.71
     1        Bachelors      m     4.53
     2  Below Secondary      m     1.67
@@ -433,7 +433,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 
 ```
-               department recruitment_channel  total_emp
+               department recruitment_channel  total_employees
     0           Analytics               other         17
     1           Analytics            sourcing          3
     2             Finance               other          3
@@ -470,7 +470,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-               department gender  award_per
+               department gender  percentage_of_employees
     0           Analytics      f       1.53
     1           Analytics      m       1.15
     2             Finance      f       1.11
@@ -507,7 +507,7 @@ data1.to_sql('employee', conn, index=False)
   print(result)
 ```
 
-              department recruitment_channel  avg_LoS
+              department recruitment_channel  avg_length_service
     0         Operations            referred     6.20
     1         Operations               other     6.08
     2         Operations            sourcing     5.93
