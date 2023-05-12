@@ -76,7 +76,7 @@ data.to_csv("Cleaned_employees_final_dataset.csv",index=False)
 ***
 
 
-# Module 2: Data Analysys using SQL
+# Module 2: Data Analysis using SQL
 
 - In this module, we worked on performing data analysis on the pre-processed data from the previous module and conducting Data Analysis using SQL.
 - We generated queries for given problem statements. We performed queries using SQLITE connection inside python program. 
