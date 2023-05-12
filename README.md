@@ -71,8 +71,8 @@ data["previous_year_rating"]=data["previous_year_rating"].astype("int64")
     
 
 # Now we will save this cleaned dataframe as "Cleaned_employees_final_dataset.csv" in a csv file format.
-data.to_csv("Cleaned_employees_final_dataset.csv",index=False) ```
-
+data.to_csv("Cleaned_employees_final_dataset.csv",index=False) 
+```
 ***
 
 
