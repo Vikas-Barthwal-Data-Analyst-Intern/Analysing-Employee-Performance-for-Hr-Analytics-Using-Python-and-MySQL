@@ -85,7 +85,7 @@ data.to_csv("Cleaned_employees_final_dataset.csv",index=False) ```
 In this module, we worked on performing data analysis on the pre-processed data from the previous module and conducting Data Analysis using SQL. We generated queries for given problem statements. We performed queries using SQLITE connection inside python program. 
 
  
-``` # Here, First we will load our cleaned csv dataset named "Cleaned_employees_final_dataset.csv" into a new dataframe.
+# Here, First we will load our cleaned csv dataset named "Cleaned_employees_final_dataset.csv" into a new dataframe.
 
 data1 = pd.read_csv("Cleaned_employees_final_dataset.csv")
 
