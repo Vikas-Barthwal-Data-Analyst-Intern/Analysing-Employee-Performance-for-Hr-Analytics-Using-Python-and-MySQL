@@ -98,7 +98,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution:
-  query = "SELECT department,gender, round(avg(age),2) as avg_age FROM employee group by 1,2"
+  query = "select department,gender,round(avg(age),2) as average_age from employee group by department,gender"
   result = pd.read_sql_query(query, conn)
 
 # Displaying the query result :
@@ -133,7 +133,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "SELECT department, round(avg(avg_training_score),2) as avg_training_score FROM employee group by 1 order by 2 desc limit 3"
+  query = "select department,round(avg(avg_training_score),2)as avg_training_score from employee group by department order by avg_training_score desc limit 3"
   result = pd.read_sql_query(query, conn)
 
 # Displaying the query result :
@@ -152,7 +152,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select region, round(count(employee_id) *100/round((select count(*) from employee where awards_won = 1),2),2) as award_percentage from employee   where awards_won = 1 group by 1"
+  query = "WITH CTE(REGION,TOTAL) AS (SELECT REGION,COUNT(*) FROM employee WHERE AWARDS_WON=1 GROUP BY REGION) SELECT REGION,ROUND(TOTAL*100/(SELECT COUNT(*) FROM employee WHERE AWARDS_WON=1),2) AS AWARDS_PERCENTAGE FROM CTE"
 
   result = pd.read_sql_query(query, conn)
 
@@ -201,7 +201,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "SELECT recruitment_channel,education,COUNT(*) as emp_count from employee where KPIs_met_more_than_80 =1  group by 1,2"
+  query = "select recruitment_channel,education,count(employee_id) from employee where `KPIs_met_more_than_80` =1 group by recruitment_channel,education"
 
   result = pd.read_sql_query(query, conn)
 
@@ -228,7 +228,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select department, round(avg(length_of_service),2) as avg_length_service from employee where previous_year_rating >= 4 group by 1"
+  query = "select department,round(avg(length_of_service),2)as average_length_of_service from employee where previous_year_rating>= 4 group by department"
 
   result = pd.read_sql_query(query, conn)
 
@@ -254,7 +254,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select region, round(avg(previous_year_rating),2) as avg_pre_year_rating from employee group by 1 order by 2 desc limit 5"
+  query = "select region,round(avg(previous_year_rating),2) average_previous_year_rating from employee group by region order by average_previous_year_rating desc limit 5"
 
   result = pd.read_sql_query(query, conn)
 
@@ -276,7 +276,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select department, count(*) as emp_num from employee where length_of_service >5  group by 1 having count(*)>100"
+  query = "select department,count(*)as total from employee where length_of_service>5 group by department having total>100"
 
   result = pd.read_sql_query(query, conn)
 
@@ -301,7 +301,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select department,gender,round(avg(length_of_service),2) as avg_LoS from employee where no_of_trainings >3  group by 1,2"
+  query = "select department,gender,round(avg(length_of_service),2)as average_length_of_service from employee where no_of_trainings>3 group by department,gender"
 
   result = pd.read_sql_query(query, conn)
 
@@ -330,7 +330,7 @@ data1.to_sql('employee', conn, index=False)```
 ##code
 
 # Solution :
-  query = "select department,round((count(case when awards_won = 1 then 1 end)*100)/round(count(*),2),2) as percentage_a_won,count(case when awards_won =1   then 1 end) as fawon_count,count(*) as total_F from employee  where gender ='f' group by 1"
+  query = "select department, round(sum(case when awards_won=1 then 1 else 0 end)/ count(*)*100,2) as percentage_of_female_employees_won_awards,sum(case when awards_won=1 then 1 else 0 end) as female_employees_won_awards,count(*) as total_female_employees from employee where gender="f" group by department"
 
   result = pd.read_sql_query(query, conn)
 
@@ -356,7 +356,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select department, round((count(case when length_of_service between 5 and 10 then 1 end)*100/round(count(*),2)),2) as service_per  from           employee  group by 1"
+  query = "with cte as (select department,count(*) as a from employee group by department) select e.department,round(count(*)*100/(cte.a),2) from employee e left join cte on cte.department=e.department where length_of_service between 5 and 10 group by e.department"
 
   result = pd.read_sql_query(query, conn)
 
@@ -382,7 +382,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select department,region, count(*) as noemp from employee where KPIs_met_more_than_80 = 1 and awards_won >=1 group by 1,2 order by 3 desc limit   3"
+  query = "select department,region,count(*) as total_employees from employee where KPIs_met_more_than_80 and awards_won >=1 group by department,region order by total_employees desc limit 3"
 
   result = pd.read_sql_query(query, conn)
 
@@ -402,7 +402,7 @@ data1.to_sql('employee', conn, index=False)```
 ##code
 
 # Solution :
-  query = "select education, gender, round(avg(length_of_service),2) as avg_LoS from employee where no_of_trainings >2 and avg_training_score>75 group by   1,2"
+  query = "select education,gender,round(avg(length_of_service),2) as average_service from employee where no_of_trainings > 2 and avg_training_score > 75 group by education,gender"
 
   result = pd.read_sql_query(query, conn)
 
@@ -425,7 +425,7 @@ data1.to_sql('employee', conn, index=False)```
 ##code
 
 # Solution :
-  query = "select department,recruitment_channel,count(*) as total_emp from employee where KPIs_met_more_than_80=1 and previous_year_rating=5 and           length_of_service>10 group by 1,2"
+  query = "select department,recruitment_channel,count(*) as total_employees from employee where KPIs_met_more_than_80 =1 and previous_year_rating = 5 and length_of_service > 10 group by department,recruitment_channel"
 
   result = pd.read_sql_query(query, conn)
 
@@ -462,7 +462,7 @@ data1.to_sql('employee', conn, index=False)```
 ```python
 ##code
 # Solution :
-  query = "select department,gender, round((count(case when awards_won =1 and previous_year_rating>=4 and avg_training_score > 70 then 1                     end)*100/round(count(*),2)),2) as award_per from employee group by 1,2"
+  query = "with table1 as (select department,gender,count(*) as total2 from employee group by department,gender), table2 as (select department,gender,count(*) as total1 from employee where previous_year_rating in (4,5) and avg_training_score > 70 and awards_won = 1 group by department,gender) select table1.department,table1.gender,ifnull(round(table2.total1 * 100 / (table1.total2),2),0) as percentage_of_employees from table1 left join table2 on table1.department=table2.department and table1.gender=table2.gender"
 
   result = pd.read_sql_query(query, conn)
 
@@ -499,7 +499,7 @@ data1.to_sql('employee', conn, index=False)```
 ##code
 
 # Solution :
-  query = "select department,recruitment_channel,round(avg(length_of_service),2) as avg_LoS from employee  where KPIs_met_more_than_80 =1 and               previous_year_rating=5 and age between 25 and 45  group by 1,2 order by 3 desc  limit 5"
+  query = "select department,recruitment_channel,round(avg(length_of_service),2)as avg_length_service from employee where KPIs_met_more_than_80=1 and previous_year_rating=5 and age between 25 and 45 group by department,recruitment_channel order by avg_length_service desc limit 5"
 
   result = pd.read_sql_query(query, conn)
 
