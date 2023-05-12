@@ -13,18 +13,18 @@ Data was provided by HiCounselor.
 __Data cleaning:__ 
 Data Preprocessing Using Python Programming and connecting to Database : 
 - Droping null values 
-2.Droping duplicate values
-3.Data type conversion 
-4.Data validations 
-5.Converting dataframe into SQL Table and solving queries using SQLITE connection
+- Droping duplicate values
+- Data type conversion 
+- Data validations 
+- Converting dataframe into SQL Table and solving queries using SQLITE connection
 
 Using SQL Queries To Solve Problem Statements :
-1.Aggregating the data,
-2.Grouping the data,
-3.Ordering the data,
-4.Using CTE to get results
-5.Using Joins to get desired results from CTE tables
-6.Sub queries etc
+- Aggregating the data,
+- Grouping the data,
+- Ordering the data,
+- Using CTE to get results
+- Using Joins to get desired results from CTE tables
+- Sub queries etc
 
 ***
 
