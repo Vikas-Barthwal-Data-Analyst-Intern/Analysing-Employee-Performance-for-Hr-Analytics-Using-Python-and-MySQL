@@ -29,7 +29,7 @@ Using SQL Queries To Solve Problem Statements :
 ***
 
 # Module 1: Data Preprocessing using python:
-In this task we worked on handling null values, deletion or transformation of irrelevant values, data type transformation, removing duplicates and data validations. Once you have completed this task, you will get a refined and cleaner data set for further analysis.
+In this task we worked on handling null values, deletion or transformation of irrelevant values, data type transformation, removing duplicates and data validations. Once we have completed this task, we will get a refined and cleaner data set for further analysis.
 
 Task 1 : Steps To Perform Data Pre-Processing :
 - Step 1: Removing duplicate rows.
